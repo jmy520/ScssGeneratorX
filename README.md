@@ -2,21 +2,31 @@
 
 This extension is used to generate scss structured style code based on html tag code. Also supported for vue SFCs.
 
-## features
+## Features
 
 - Add snippet to your scss files (for angular projects and html projects).
 - Add snippet to your vue SFCs (for vue projects).
 
 
-## usage
+## Usage
 
 Start typing selectors as you know and you see it as a snippet.
 
 For getting scss for the entire template, use the label - `generate x-scss`.
 
-## Known Issues
+## Settings
 
-none.
+* `scssgeneratorx.autoChildSelector`: Set whether to add child selector symbol, default is `false`.
+* `scssgeneratorx.ignore`: Set tags that will be skipped if encountered, default is `["<template>", "<slot>", "<ng-template>", "<ng-container>", "<ng-content>"]`.
+* `scssgeneratorx.mappingRules`: Set tag-to-style mapping rules, the key is RegExp string, the value used to replace tag, default is `{'^el-': '.${tagName}'}`.
+
+
+## Donate
+
+If you find this extension useful, you can buy author a coffee.
+
+![wechat.png](https://s2.loli.net/2023/11/07/qRHrdFVnmWDo9sG.png)
+![alipay.png](https://s2.loli.net/2023/11/07/GqEljHSRnawKXkN.png)
 
 ### 1.0.0
 

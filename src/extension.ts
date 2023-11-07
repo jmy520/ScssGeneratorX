@@ -2,6 +2,9 @@ import * as vscode from 'vscode';
 import { readHtml, readVueTemplate } from './read-html/read-html';
 import { Rendered } from './rendered/rendered';
 import { parseComponent } from 'vue-sfc-parser';
+import { resolveIgnore } from './utils/utils';
+import { Config } from './config/config';
+
 
 const pervious: Array<Rendered> = [];
 
@@ -10,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.languages.registerCompletionItemProvider(`scss`, {
 		async provideCompletionItems() {
-			const html = await readHtml();
+			const html = resolveIgnore(Config.getInstance().ignore, await readHtml());
 			
 			let rendered = pervious.find(item => {
 					const clean = (value: string) => value.replace(/[\s\n\t]/g, ``);
@@ -48,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 
 			if (matchState) {
-				const html = await readVueTemplate();
+				const html = resolveIgnore(Config.getInstance().ignore, await readVueTemplate());
 				
 				let rendered = pervious.find(item => {
 						const clean = (value: string) => value.replace(/[\s\n\t]/g, ``);

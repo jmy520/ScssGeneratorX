@@ -11,7 +11,9 @@ export class Rendered {
   private readonly childrenPropName = `children`;
 
   private readonly getHTMLChildren = () => {
-    const htmlChildren = values(new JSDOM(this.html).window.document.body[this.childrenPropName]);
+    const htmlChildren = values(new JSDOM(this.html, {
+      contentType: 'text/html'
+    }).window.document.body[this.childrenPropName]);
     return htmlChildren;
   };
 

@@ -1,6 +1,8 @@
 import { repeat } from 'lodash';
 import { MarkdownString, SnippetString } from 'vscode';
 import { CompletionBase } from '../base/base.abstract';
+import { Config } from '../config/config';
+import { resolveMapping } from '../utils/utils';
 
 export class CompletionElement extends CompletionBase {
   constructor(item: Element) {
@@ -17,7 +19,8 @@ export class CompletionElement extends CompletionBase {
   }
 
   private generatePrefix(item: Element, nth = true) {
-    return `${item.localName}${this.idSelector(item) || this.classSelectors(item).join(``)}${nth ? this.nthSelector(item) : ``}`;
+    const mappingRules = Config.getInstance().mappingRules;
+    return `${resolveMapping(mappingRules, item.localName)}${this.idSelector(item) || this.classSelectors(item).join(``)}${nth ? this.nthSelector(item) : ``}`;
   }
 
   private generate3(item: Element, level = 0, scss = new SnippetString) {
@@ -27,7 +30,7 @@ export class CompletionElement extends CompletionBase {
     const start = `\n${repeat(`  `, ++level)}`;
 
     for (const child of Array.from(item.children)) {
-      scss.appendText(`${start}>`);
+      scss.appendText(`${start}${Config.getInstance().autoChildSelector ? '> ' : ''}`);
       this.generate3(child, level, scss);
     }
 

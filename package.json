@@ -1,7 +1,8 @@
 {
-  "name": "scss-generator-x",
-  "displayName": "scss generator x",
-  "description": "generate scss markup from your html and vue SFCs",
+  "name": "scssgeneratorx",
+  "displayName": "Scss Generator X",
+  "description": "Generate scss markup from your html and vue SFCs",
+  "publisher": "BlackJason",
   "version": "1.0.0",
   "icon": "images/logo.png",
   "engines": {
@@ -30,6 +31,7 @@
     "vue3.0",
     "vue2.x",
     "vue3.x",
+    "angular",
     "SFCs",
     "easy scss",
     "easy sass",
@@ -43,7 +45,38 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": []
+    "commands": [],
+    "configuration":[
+      {
+        "type": "object",
+        "title": "Configurations for Scss Generator X",
+        "properties": {
+          "autoChildSelector": {
+            "type": "boolean",
+            "description": "Insert child selector symbol",
+            "default": false
+          },
+          "ignore": {
+            "type": "array",
+            "description": "Config ignore tags",
+            "default": [
+              "template",
+              "slot",
+              "ng-template",
+              "ng-container",
+              "ng-content"
+            ]
+          },
+          "mappingRules": {
+            "type":"object",
+            "description": "Config mapping rules",
+            "default": {
+              "^el-": ".${tagName}"
+            }
+          }
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
