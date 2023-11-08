@@ -25,8 +25,8 @@ For getting scss for the entire template, use the label - `generate x-scss`.
 
 If you find this extension useful, you can buy author a coffee.
 
-![MyQRCode.png](https://s2.loli.net/2023/11/08/Bpog1uzSQfJ2T95.png)
+![MyQRCode.png](https://s2.loli.net/2023/11/08/POm1YkXVCR36Lqx.png)
 
-### 1.0.0
+### 1.1.0
 
 Enjoy!

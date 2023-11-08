@@ -5,6 +5,10 @@
   "publisher": "BlackJason",
   "version": "1.1.0",
   "icon": "images/logo.png",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/jmy520/ScssGeneratorX"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
